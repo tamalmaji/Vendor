@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($statement);
     }
     if (empty($title_err)) {
-        $sqli = 'UPDATE vendor_catagory SET catagory_title, create_at, update_at
+        $sqli = 'INSERT INTO vendor_catagory (catagory_title, create_at, update_at)
         VALUE(:catagory_title, :create_at, :update_at)';
         if ($statements = $pdo->prepare($sqli)) {
             $statements->bindValue(':catagory_title', $title);

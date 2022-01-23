@@ -17,7 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../css/adminlte.min.css">
+  <link rel="stylesheet" href="../../style/adminlte.min.css">
   <!-- css -->
 </head>
 
@@ -69,8 +69,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../../public/index.php" class="brand-link">
-        <img src="../../public/img/logo-2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <a href="../../index.php" class="brand-link">
+        <img src="../../images/ecommerce-logo2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AdminPanal</span>
       </a>
 
@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="../../public/" class="img-circle elevation-2" alt="User Image" style="background-color: white;">
+            <img src="../../images/ecommerce-logo2.png" class="img-circle elevation-2" alt="User Image" style="background-color: white;">
           </div>
           <div class="info">
             <a href="#" class="d-block"></a>

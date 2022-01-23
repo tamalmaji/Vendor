@@ -1,3 +1,50 @@
+<?php
+require_once '../function/dbConnection.php';
+
+$name = '';
+$pwd = '';
+
+$name_err = '';
+$pwd_err = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_EMAIL);
+
+    $name = trim($_POST['name']);
+    $pwd = trim($_POST['pwd']);
+
+    if (empty($name)) {
+        $name_err = 'Enter your email';
+    }
+    if (empty($pwd)) {
+        $pwd_err = 'Enter your password';
+    }
+
+    if (empty($name_err) && empty($pwd_err)) {
+        $sql = 'SELECT user_email, user_pwd FROM vendor_user WHERE user_email = :email';
+        if ($statement = $pdo->prepare($sql)) {
+            $statement->bindValue(':email', $name);
+            if ($statement->execute()) {
+                if ($statement->rowCount() === 1) {
+                   if ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                       $password = $row['user_pwd'];
+                       if (password_verify($pwd, $password)) {
+                           session_start();
+                           $_SESSION['login'] = true;
+                           $_SESSION['user_email'] = $row['user_email'];
+                           header('location: ../index.php');
+                       }
+                   }
+                }else{
+                    $pwd_err = 'No account fount for that eamil';
+                }
+            }else{
+                die('Somthing Went Wrong');
+            }
+        }unset($statement);
+    }unset($pdo);
+}
+?>
 <?php include_once './includes/header.php' ?>
 <!-- PAGE BANNER SECTION -->
 <div class="page-banner-section section">
@@ -21,15 +68,17 @@
         <div class="row">
             <div class="col-lg-6 col-md-8 col-12 m-auto">
                 <div class="login-reg-form">
-                    <form action="#">
+                    <form action="" method="POST">
                         <div class="row">
                             <div class="col-12 mb-20">
-                                <label for="username">Username or email <span class="required">*</span></label>
-                                <input name="username" id="username" type="text">
+                                <label for="name">Email <span class="required">*</span></label>
+                                <input name="name" id="name" type="text" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" require value="<?php echo $name ?>" />
+                                <span class="invalid-feedback"><?php echo $name_err; ?></span>
                             </div>
                             <div class="col-12 mb-20">
-                                <label for="password">Passwords <span class="required">*</span></label>
-                                <input name="password" id="password" type="password">
+                                <label for="pwd">Passwords <span class="required">*</span></label>
+                                <input name="pwd" id="password" type="password" class="form-control <?php echo (!empty($pwd_err)) ? 'is-invalid' : ''; ?>" require value="<?php echo $pwd ?>" />
+                                <span class="invalid-feedback"><?php echo $pwd_err; ?></span>
                             </div>
                             <div class="col-12 mb-20">
                                 <input value="Login" name="login" class="inline" type="submit">

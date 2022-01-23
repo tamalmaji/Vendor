@@ -13,7 +13,7 @@ if ($statement = $pdo->prepare($sql)) {
       if ($page > $total_pages) {
         header("Location: catagory.php?page=1");
       }
-    }else{
+    } else {
       $page = 1;
     }
     $start_from = ($page - 1) * 0.5;
@@ -23,7 +23,6 @@ if ($statement = $pdo->prepare($sql)) {
         $catagorys = $statements->fetchAll(PDO::FETCH_ASSOC);
       }
     }
-
   }
 }
 
@@ -40,7 +39,7 @@ if ($statement = $pdo->prepare($sql)) {
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="../../public/index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
             <li class="breadcrumb-item active">Catagory</li>
           </ol>
         </div><!-- /.col -->

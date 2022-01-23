@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (in_array($imgExt, $valid_extensions)) {
         if ($imageSize < 5000000) {
             $picProfile = rand(1000, 1000000) . '.' . $imgExt;
-            $upload_dir = 'images/slider' . $picProfile;
-            $upload_File_dir = '../../images/slider' . $picProfile;
+            $upload_dir = 'images/slider/' . $picProfile;
+            $upload_File_dir = '../../images/slider/' . $picProfile;
             move_uploaded_file($temp_dir, $upload_File_dir);
         }
     }

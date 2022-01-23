@@ -78,7 +78,7 @@ if ($statement = $pdo->prepare($sql)) {
                   <tr>
                     <td><?php echo $i + 1 ?></td>
                     <td>
-                      <img src="" alt="">
+                      <img src="../../<?php echo $sider['slider_image'] ?>" alt="" style="width: 100px;">
                     </td>
                     <td><?php echo $sider['slider_title'] ?></td>
                     <td><?php echo $sider['create_at'] ?></td>

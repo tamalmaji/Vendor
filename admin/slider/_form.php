@@ -4,6 +4,7 @@
         <input type="text" class="form-control <?php echo (!empty($title_err)) ? 'is-invalid' : ''; ?>" name="title" require placeholder="Catagory Name" value="<?php echo $title ?>">
         <span class="invalid-feedback"><?php echo $title_err; ?></samp>
     </div>
+
     <div class="form-group">
         <label for="img">Sider Image</label>
         <div class="input-group">
