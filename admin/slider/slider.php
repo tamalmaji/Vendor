@@ -1,32 +1,5 @@
 <?php
-require_once "../../function/dbConnection.php";
-$no_per_page = 10;
-
-$sql = 'SELECT * FROM vendor_slider';
-if ($statement = $pdo->prepare($sql)) {
-  if ($statement->execute()) {
-    $noOfPages = $statement->rowCount();
-    $total_pages = ceil($noOfPages / $no_per_page);
-
-    if (isset($_GET['page']) && !empty($_GET['page'])) {
-      $page = $_GET['page'];
-      if ($page > $total_pages) {
-        header("Location: catagory.php?page=1");
-      }
-    }else{
-      $page = 1;
-    }
-    $start_from = ($page - 1) * 0.5;
-    $sqli = "SELECT * FROM vendor_slider LIMIT $start_from, $no_per_page";
-    if ($statements = $pdo->prepare($sqli)) {
-      if ($statements->execute()) {
-        $siders = $statements->fetchAll(PDO::FETCH_ASSOC);
-      }
-    }
-
-  }
-}
-
+  require_once "../function/slider/_slider.php";
 ?>
 <?php include_once "../includes/header.php" ?>
 <!-- Content Wrapper. Contains page content -->
@@ -40,7 +13,7 @@ if ($statement = $pdo->prepare($sql)) {
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="../../public/index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
             <li class="breadcrumb-item active">Slider</li>
           </ol>
         </div><!-- /.col -->
@@ -107,18 +80,18 @@ if ($statement = $pdo->prepare($sql)) {
         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
           <ul class="pagination">
             <?php if ($page > 1) : ?>
-              <li class="paginate_button page-item previous" id="example1_previous"><a href="catagory.php?page=<?php echo ($page - 1) ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+              <li class="paginate_button page-item previous" id="example1_previous"><a href="slider.php?page=<?php echo ($page - 1) ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
             <?php endif ?>
             <?php for ($i = 1; $i < $total_pages; $i++) : ?>
               <?php if ($i == $page) { ?>
 
-                <li class="paginate_button page-item active"><a href="catagory.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                <li class="paginate_button page-item active"><a href="slider.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
               <?php } else { ?>
-                <li class="paginate_button page-item"><a href="catagory.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                <li class="paginate_button page-item"><a href="slider.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
               <?php } ?>
             <?php endfor ?>
             <?php if ($i > $page) : ?>
-              <li class="paginate_button page-item next" id="example1_next"><a href="catagory.php?page=<?php echo ($page + 1) ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+              <li class="paginate_button page-item next" id="example1_next"><a href="slider.php?page=<?php echo ($page + 1) ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
             <?php endif ?>
           </ul>
         </div>

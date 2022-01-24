@@ -1,3 +1,6 @@
+<?php
+    require_once "./function/_address.php";
+?>
 <?php include_once './includes/header.php' ?>
 
 <!-- PAGE BANNER SECTION -->
@@ -15,67 +18,49 @@
     </div>
 </div>
 <!-- END PAGE BANNER SECTION -->
-    
+
 <!-- PAGE SECTION START -->
 <div class="page-section section pt-100 pb-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12 m-auto">
                 <div class="login-reg-form">
-                    <form action="#">
+                    <form action="address.php" method="POST">
                         <div class="row">
-                            <div class="col-md-6 col-xs-12 mb-20">
-                                <label for="r_f_name">First Name <span class="required">*</span></label>										
-                                <input id="r_f_name" type="text"/>
-                            </div>
-                            <div class="col-md-6 col-xs-12 mb-20">
-                                <label for="r_l_name">Last Name <span class="required">*</span></label>									
-                                <input id="r_l_name" type="text"/>
+                            <div class="col-md-12 col-xs-12 mb-20">
+                                <label for="name">Name <span class="required">*</span></label>
+                                <input id="name" type="text" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" name="name" require value="<?php echo $name ?>" />
+                                <span class="invalid-feedback"><?php echo $name_err; ?></span>
                             </div>
                             <div class="col-xs-12 mb-20">
-                                <label for="r_c_name">Company Name</label>									
-                                <input id="r_c_name" type="text"/>
+                                <label for="c_name">Company Name</label>
+                                <input id="c_name" type="text" class="form-control" name="c_name" value="<?php echo $c_name ?>" />
                             </div>
                             <div class="col-md-6 col-xs-12 mb-20">
-                                <label for="r_email">Email Address <span class="required">*</span></label>										
-                                <input id="r_email" type="email"/>
-                            </div>
-                            <div class="col-md-6 col-xs-12 mb-20">
-                                <label for="r_phone">Phone  <span class="required">*</span></label>										
-                                <input id="r_phone" type="text" />
+                                <label for="phone">Phone </label>
+                                <input id="phone" type="text" class="form-control" name="phone" value="<?php echo $phone ?>" />
                             </div>
                             <div class="col-xs-12 mb-20">
-                                <label for="r_country">Country <span class="required">*</span></label>
-                                <select id="r_country">
-                                  <option value="1">Select a country</option>
-                                  <option value="2">bangladesh</option>
-                                  <option value="3">Algeria</option>
-                                  <option value="4">Afghanistan</option>
-                                  <option value="5">Ghana</option>
-                                  <option value="6">Albania</option>
-                                  <option value="7">Bahrain</option>
-                                  <option value="8">Colombia</option>
-                                  <option value="9">Dominican Republic</option>
+                                <label for="country">Country </label>
+                                <select id="country" name="country">
+                                    <option value="1">India</option>
                                 </select>
                             </div>
                             <div class="col-xs-12 mb-20">
-                                <label>Address <span class="required">*</span></label>
-                                <input type="text" placeholder="Street address" />
+                                <label>Address</label>
+                                <input type="text" placeholder="Street address" name="address" class="form-control" value="<?php echo $address ?>" />
                             </div>
                             <div class="col-xs-12 mb-20">
-                                <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
-                            </div>
-                            <div class="col-xs-12 mb-20">
-                                <label for="r_city">Town / City <span class="required">*</span></label>
-                                <input id="r_city" type="text"/>
+                                <label for="city">Town / City</label>
+                                <input id="city" type="text" class="form-control" name="city" value="<?php echo $city ?>" />
                             </div>
                             <div class="col-md-6 col-xs-12 mb-20">
-                                <label>State / County <span class="required">*</span></label>										
-                                <input type="text"/>
+                                <label>State </label>
+                                <input type="text" name="state" class="form-control" value="<?php echo $state ?>" />
                             </div>
                             <div class="col-md-6 col-xs-12 mb-20">
-                                <label for="r_zip">Postcode / Zip <span class="required">*</span></label>										
-                                <input id="r_zip" type="text" />
+                                <label for="zip">Postcode / Zip</label>
+                                <input id="zip" type="text" name="zip" class="form-control" value="<?php echo $zip ?>" />
                             </div>
                             <div class="col-xs-12 mb-20">
                                 <input id="rememberme" type="checkbox">
@@ -91,6 +76,6 @@
         </div>
     </div>
 </div>
-<!-- PAGE SECTION END --> 
- 
+<!-- PAGE SECTION END -->
+
 <?php include_once './includes/footer.php' ?>

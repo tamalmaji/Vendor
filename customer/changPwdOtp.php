@@ -1,5 +1,5 @@
 <?php
-    require_once "./function/_otp.php";
+    require_once "./function/_changPwdOtp.php";
 ?>
 <?php include_once './includes/header.php' ?>
 <!-- PAGE BANNER SECTION -->
@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row">
             <div class="page-banner-content col-xs-12">
-                <h2>login</h2>
+                <h2>password OTP</h2>
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">OTP</li>
+                    <li class="active">password OTP</li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-8 col-12 m-auto">
                 <div class="login-reg-form">
-                    <form action="otp.php" method="POST">
+                    <form action="changPwdOtp.php" method="POST">
                         <div class="row">
                             <div class="col-12 mb-20">
                                 <label for="otp_code">OTP <span class="required">*</span></label>

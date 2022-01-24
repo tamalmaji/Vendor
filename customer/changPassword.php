@@ -1,3 +1,6 @@
+<?php
+require_once "./function/_changPassword.php";
+?>
 <?php include_once './includes/header.php' ?>
 
 <!-- PAGE BANNER SECTION -->
@@ -5,10 +8,10 @@
     <div class="container">
         <div class="row">
             <div class="page-banner-content col-xs-12">
-                <h2>Register</h2>
+                <h2>CHANG PASSWORD</h2>
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Register</li>
+                    <li class="active">CHANG PASSWORD</li>
                 </ul>
             </div>
         </div>
@@ -22,19 +25,17 @@
         <div class="row">
             <div class="col-lg-8 col-12 m-auto">
                 <div class="login-reg-form">
-                    <form action="#">
+                    <form action="changPassword.php" method="POST">
                         <div class="row">
                             <div class="col-xs-12 mb-20">
-                                <label class="" for="r_password">Old password<span class="required">*</span></label>
-                                <input id="r_password" type="password">
+                                <label class="" for="pwd">Account password<span class="required">*</span></label>
+                                <input id="pwd" type="password" class="form-control <?php echo (!empty($pwd_err)) ? 'is-invalid' : ''; ?>" name="pwd" require value="<?php echo $pwd ?>" />
+                                <span class="invalid-feedback"><?php echo $pwd_err; ?></span>
                             </div>
                             <div class="col-xs-12 mb-20">
-                                <label class="" for="r_password">Account password<span class="required">*</span></label>
-                                <input id="r_password" type="password">
-                            </div>
-                            <div class="col-xs-12 mb-20">
-                                <label class="" for="r_c_password">Confirm password<span class="required">*</span></label>
-                                <input id="r_c_password" type="password">
+                                <label class="" for="c_pwd">Confirm password<span class="required">*</span></label>
+                                <input id="c_pwd" type="password" class="form-control <?php echo (!empty($c_pwd_err)) ? 'is-invalid' : ''; ?>" name="c_pwd" require value="<?php echo $c_pwd ?>" />
+                                <span class="invalid-feedback"><?php echo $c_pwd_err; ?></span>
                             </div>
                             <div class="col-xs-12 mb-20">
                                 <input id="rememberme" type="checkbox">

@@ -1,4 +1,4 @@
-<?php require_once "../function/userType/_userType.php" ?>
+<?php require_once "../function/order/_order.php" ?>
 <?php include_once "../includes/header.php" ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
-            <li class="breadcrumb-item active">Slider</li>
+            <li class="breadcrumb-item active">User</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,14 +23,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <a href="add.php" class="btn btn-outline-primary btn-sm">Add userType</a>
-        <br>
-        <br>
-      </div>
-      <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"> userType </h3>
+            <h3 class="card-title"> User </h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body table-responsive p-0">
@@ -44,18 +39,17 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($userTypes as $i => $userType) : ?>
+                <?php foreach ($orders as $i => $order) : ?>
                   <tr>
                     <td><?php echo $i + 1 ?></td>
-                    <td><?php echo $userType['userType_title'] ?></td>
-                    <td><?php echo $userType['create_at'] ?></td>
-                    <td>
-                      <a href="update.php?id=<?php echo $userType['userType_id'] ?>" class="btn btn-info btn-xs">Edit</a>
+                    <td><?php echo $order['user_order_id'] ?></td>
+                    <td><?php echo $order['create_at'] ?></td>
+                    <!-- <td>
                       <form action="delete.php" method="POST" style="display: inline-block;">
-                        <input type="hidden" name="id" value="<?php echo $userType['userType_id'] ?>">
+                        <input type="hidden" name="id" value="<?php //echo $user['user_id'] ?>">
                         <button type="submit" class="btn btn-danger btn-xs">Delete</button>
                       </form>
-                    </td>
+                    </td> -->
                   </tr>
                 <?php endforeach ?>
               </tbody>
@@ -74,18 +68,18 @@
         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
           <ul class="pagination">
             <?php if ($page > 1) : ?>
-              <li class="paginate_button page-item previous" id="example1_previous"><a href="userType.php?page=<?php echo ($page - 1) ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+              <li class="paginate_button page-item previous" id="example1_previous"><a href="order.php?page=<?php echo ($page - 1) ?>" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
             <?php endif ?>
             <?php for ($i = 1; $i < $total_pages; $i++) : ?>
               <?php if ($i == $page) { ?>
 
-                <li class="paginate_button page-item active"><a href="userType.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                <li class="paginate_button page-item active"><a href="order.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
               <?php } else { ?>
-                <li class="paginate_button page-item"><a href="userType.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                <li class="paginate_button page-item"><a href="order.php?page=<?php echo $i ?>" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
               <?php } ?>
             <?php endfor ?>
             <?php if ($i > $page) : ?>
-              <li class="paginate_button page-item next" id="example1_next"><a href="userType.php?page=<?php echo ($page + 1) ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+              <li class="paginate_button page-item next" id="example1_next"><a href="order.php?page=<?php echo ($page + 1) ?>" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
             <?php endif ?>
           </ul>
         </div>
