@@ -1,5 +1,5 @@
 <?php
-    require_once "./function/_shop.php";
+    require_once "./function/_type.php";
 ?>
 <?php include_once './includes/header.php' ?>
 <!-- PAGE BANNER SECTION -->
@@ -46,7 +46,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12 mb-8">
                                     <div class="product-item text-center">
                                         <div class="product-img">
-                                            <a class="image" href="product-details.php?id=<?php echo $shop['product_id'] ?>"><img src="./<?php echo $shop['product_img'] ?>" alt="" style="height: 300px" /></a>
+                                            <a class="image" href="product-details.php"><img src="./<?php echo $shop['product_img'] ?>" alt="" style="height: 300px" /></a>
 
                                             <a href="cart.php" class="add-to-cart">add to cart</a>
                                             <div class="action-btn fix">

@@ -1,5 +1,5 @@
 <?php
-    require_once "../function/product/_add.php";
+require_once "../function/product/_add.php";
 ?>
 <?php include_once "../includes/header.php" ?>
 <div class=" content-wrapper" style="min-height: 485.139px;">
@@ -8,7 +8,7 @@
             <a href="catagory.php" class="btn btn-outline-primary m-2">Back to Sider</a>
         </div>
         <div class="col-12 p-5">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Product Title</label>
                     <input type="text" class="form-control <?php echo (!empty($title_err)) ? 'is-invalid' : ''; ?>" name="title" require placeholder="Product Name" value="<?php echo $title; ?>">
@@ -43,6 +43,26 @@
                             <option value="<?php echo $catagor['catagory_id'] ?>"><?php echo $catagor['catagory_title'] ?></option>
                         <?php endforeach ?>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Type</label>
+                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="pFor">
+
+                        <option selected="selected" value="0">Select Option</option>
+                        <?php foreach ($types as $i => $type) : ?>
+
+                            <option value="<?php echo $type['for_id'] ?>"><?php echo $type['for_title'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="img">Product Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

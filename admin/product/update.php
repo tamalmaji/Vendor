@@ -8,7 +8,7 @@
             <a href="catagory.php" class="btn btn-outline-primary m-2">Back to Sider</a>
         </div>
         <div class="col-12 p-5">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Product Title</label>
                     <input type="text" class="form-control <?php echo (!empty($title_err)) ? 'is-invalid' : ''; ?>" name="title" require placeholder="Product Name" value="<?php echo $title; ?>">
@@ -43,6 +43,28 @@
                             <option value="<?php echo $catagor['catagory_id'] ?>"><?php echo $catagor['catagory_title'] ?></option>
                         <?php endforeach ?>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Type</label>
+                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="pfor">
+
+                        <option selected="selected" value="<?php echo $pids['for_id'] ?>"><?php echo $pids['for_title'] ?></option>
+                        <?php foreach ($types as $i => $type) : ?>
+                            <option value="<?php echo $type['for_id'] ?>"><?php echo $type['for_title'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <div class="">
+                    <img src="../../<?php echo $product['product_img'] ?>" alt="" style="width: 100px;">
+                </div>
+                <div class="form-group">
+                    <label for="img">Product Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image">
+                            <label class="custom-file-label" for="img">Choose file</label>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

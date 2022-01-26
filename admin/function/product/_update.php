@@ -21,12 +21,21 @@ if ($stmt = $pdo->prepare($sql)) {
     }
 }
 
+$sqt = 'SELECT * FROM vendor_for ORDER BY for_id';
+if ($stmt = $pdo->prepare($sqt)) {
+    if ($stmt->execute()) {
+        $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
 $title = $product['product_title'];
 $desc = $product['product_desc'];
 $price =  $product['product_price'];
 $dscprice =  $product['product_dis_price'];
 $qty = $product['product_qty'];
 $pCatagory = $product['p_cat_id'];
+$pfor = $product['product_type_id'];
+$upload_dir  = $product['product_img'];
 $date = date('Y-m-d H:i:s');
 
 $title_err = '';
@@ -42,6 +51,14 @@ if ($stmtt = $pdo->prepare($s)) {
     }
 }
 
+$st = 'SELECT * FROM vendor_for WHERE for_id  = :id';
+if ($stmtt = $pdo->prepare($st)) {
+    $stmtt->bindValue(':id', $pfor);
+    if ($stmtt->execute()) {
+        $pids = $stmtt->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_POST = filter_input_array(INPUT_POST);
 
@@ -51,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dscprice = trim($_POST['dscprice']);
     $qty = trim($_POST['qty']);
     $pCatagory = trim($_POST['pCatagory']);
+    $pfor = trim($_POST['pfor']);
 
     if (empty($title)) {
         $title_err = 'Enter product Name';
@@ -67,15 +85,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $qty_err = 'Enter Product Qty';
     }
 
+    $image = $_FILES['image']['name'];
+    $imageSize = $_FILES['image']['size'];
+    $temp_dir = $_FILES['image']['tmp_name'];
+
+    $imgExt = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+    $valid_extensions = array('jpeg', 'jpg', 'png');
+
+    if (in_array($imgExt, $valid_extensions)) {
+        if ($imageSize < 5000000) {
+            if ($product['product_img']) {
+                unlink('../../' . $product['product_img']);
+            }
+            $picProfile = rand(1000, 1000000) . '.' . $imgExt;
+            $upload_dir = 'images/productImg/' . $picProfile;
+            $upload_File_dir = '../../images/productImg/' . $picProfile;
+            move_uploaded_file($temp_dir, $upload_File_dir);
+        }
+    }
+
+
     if (empty($title_err) && empty($price_err) && empty($dscprice_err) && empty($qty_err)) {
-        $sqli = 'UPDATE vendor_product SET p_cat_id = :p_cat_id, product_title = :product_title, product_desc = :product_desc, product_qty = :product_qty, product_price = :product_price, product_dis_price = :product_dis_price, update_at = :update_at WHERE product_id = :id';
+        $sqli = 'UPDATE vendor_product SET p_cat_id = :p_cat_id, product_type_id = :product_type_id, product_title = :product_title, product_desc = :product_desc, product_qty = :product_qty, product_price = :product_price, product_dis_price = :product_dis_price, product_img = :product_img, update_at = :update_at WHERE product_id = :id';
         if ($statement = $pdo->prepare($sqli)) {
             $statement->bindValue(':p_cat_id', $pCatagory);
+            $statement->bindValue(':product_type_id', $pfor);
             $statement->bindValue(':product_title', $title);
             $statement->bindValue(':product_desc', $desc);
             $statement->bindValue(':product_qty', $qty);
             $statement->bindValue(':product_price', $price);
             $statement->bindValue(':product_dis_price', $dscprice);
+            $statement->bindValue(':product_img', $upload_dir);
             $statement->bindValue(':update_at', $date);
             $statement->bindValue(':id', $id);
             if ($statement->execute()) {

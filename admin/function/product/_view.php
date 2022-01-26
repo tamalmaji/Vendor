@@ -21,6 +21,7 @@ $price =  $product['product_price'];
 $dscprice =  $product['product_dis_price'];
 $qty = $product['product_qty'];
 $pCatagory = $product['p_cat_id'];
+$img = $product['product_img'];
 $date = date('Y-m-d H:i:s');
 
 $s = 'SELECT * FROM vendor_catagory WHERE catagory_id = :id';

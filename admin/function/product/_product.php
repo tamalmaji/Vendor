@@ -1,6 +1,6 @@
 <?php
 require_once "../../function/dbConnection.php";
-$no_per_page = 10;
+$no_per_page = 15;
 
 $sql = 'SELECT * FROM vendor_product';
 if ($statement = $pdo->prepare($sql)) {

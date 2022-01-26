@@ -160,6 +160,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="../type/type.php" class="nav-link">
+                <i class="nav-icon far fa-circle"></i>
+                <p>
+                  Type
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

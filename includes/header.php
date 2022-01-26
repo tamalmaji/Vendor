@@ -15,16 +15,16 @@
 
     <!-- All CSS Files -->
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
     <!-- Icon Font -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <link rel="stylesheet" href="style/pe-icon-7-stroke.css">
     <!-- Plugins css file -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="style/plugins.css">
     <!-- Theme main style -->
     <link rel="stylesheet" href="style/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="style/responsive.css">
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>

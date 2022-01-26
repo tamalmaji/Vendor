@@ -1,5 +1,5 @@
 <?php
-    require_once "../function/product/_view.php"
+require_once "../function/product/_view.php"
 ?>
 <?php include_once "../includes/header.php" ?>
 <div class=" content-wrapper" style="min-height: 485.139px;">
@@ -21,6 +21,13 @@
                                     <input type="hidden" name="id" value="<?php echo $pId ?>">
                                     <button type="submit" class="btn btn-danger btn-xs">Delete All</button>
                                 </form>
+                                <div class="col-12 product-image-thumbs">
+                                    <div class="product-image-thumb">
+                                        <a href="#">
+                                            <img src="../../<?php echo $img ?>" alt="Product Image-1">
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="col-12 product-image-thumbs">
                                     <?php foreach ($productimages as $i => $productimage) : ?>
                                         <div class="product-image-thumb">

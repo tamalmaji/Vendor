@@ -53,8 +53,8 @@ require_once "../function/product/_product.php";
                                         <td><?php echo $product['product_title'] ?></td>
                                         <td class="product-details">
                                             <span class="price section">
-                                                <span class="new"><?php echo $product['product_dis_price'] ?></span>
-                                                <span class="old" style="color: #999; text-decoration: line-through;">$<?php echo $product['product_price'] ?></span>
+                                                <span class="new">₹ <?php echo $product['product_dis_price'] ?></span>
+                                                <span class="old" style="color: #999; text-decoration: line-through;">₹ <?php echo $product['product_price'] ?></span>
                                             </span>
                                             
                                         </td>
